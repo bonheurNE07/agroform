@@ -1,0 +1,98 @@
+{% extends 'formsite/base.html'%}
+
+{% block content %}
+<h1>Upload an Image</h1><br>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="myFile" class="form-label">Select a file / Drag and Drop a File</label><br>
+        <input class="btn btn-outline-secondary" type="file" name="image" value="Upload a File">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Cell ID</span>
+      <input class="form-control me-2" type="text" placeholder="Cell ID" aria-label="Search" name= "cell_id">
+    </div>
+    <button type="submit" class="btn btn-primary">Extract</button>
+</form>  
+
+<br><br>
+{% if submitted %}
+<h1>Personal Informations</h1>
+<br>
+<form action="" method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  Your Form Has Errors
+			  {% for field in form %}
+			  	{% if field.errors %}
+			  		{{ field.errors }}
+			  	{% endif %}
+			  {% endfor %}
+			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+    <div class="row">
+      <div class="col-md-6">
+        {{ form.names.label_tag }}<br>
+        {{ form.names}}<br>
+        {{ form.birthdate.label_tag}}<br>
+        {{ form.birthdate}}<br>
+        {{ form.sex.label_tag}}<br>
+        {{ form.sex}}<br>
+        {{ form.national_id.label_tag}}<br>
+        {{ form.national_id}}<br>
+        {{ form.phone_number.label_tag}}<br>
+        {{ form.phone_number}}<br>
+      </div>
+      <div class="col-md-6">
+        {{ form.province.label_tag }}<br>
+        {{ form.province}}<br>
+        {{ form.district.label_tag }}<br>
+        {{ form.district }}<br>
+        {{ form.sector.label_tag}}<br>
+        {{ form.sector}}<br>
+        {{ form.cellule.label_tag}}<br>
+        {{ form.cellule}}<br>
+        {{ form.villages.label_tag}}<br>
+        <select class="form-select" name="{{ form.villages.name }}" aria-label="Select village">
+          <option value="" selected disabled>Select Your Village</option>
+          {% for villages in form.villages %}
+            {% for village in form.villages.value %}
+              <option value="{{ village.1 }}">{{ village.1 }}</option>
+            {% endfor %}
+          {% endfor %}
+        </select><br>
+        {{ form.species.label_tag}}<br>
+        
+        <select class="form-select" name="{{ form.species.name }}" aria-label="Select Tree Species">
+          <option value="" selected disabled>Select Tree Species</option>
+          {% for species in form.species %}
+            {% for specie in form.species.value %}
+              <option value="{{ specie.1 }}">{{ specie.1 }}</option>
+            {% endfor %}
+          {% endfor %}
+        </select>
+
+        {{ form.initial_qts.label_tag}}<br>
+        <select class="form-select" name="{{ form.initial_qts.name }}" aria-label="Select Tree Species">
+          <option value="" selected disabled>Select Your Qts</option>
+          {% for initial_qts in form.initial_qts %}
+            {% for qt in form.initial_qts.value %}
+              <option value="{{ qt.1 }}">{{ qt.1 }}</option>
+            {% endfor %}
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <br>
+    <br>
+</form>
+<br>
+{% else %}
+<br>
+{% endif %}
+
+
+{% endblock %}
