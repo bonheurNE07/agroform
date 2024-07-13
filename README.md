@@ -18,7 +18,7 @@ To set up AgroForm on your local machine, follow these steps:
 
 1. **Clone the Repository**:
    ```sh
-   git clone [https://github.com/bonheurNE07/agroform.git](https://github.com/bonheurNE07/agroform.git)
+   git clone https://github.com/bonheurNE07/agroform.git
    cd agroform
    ```
 
