@@ -11,6 +11,7 @@ AgroForm is a versatile web-based application designed to assist companies in th
 2. **Image Upload and Data Extraction**:
    - Users can upload images for data extraction purposes.
    - The extracted data is associated with a unique Cell ID.
+   - The extractor part is specifically designed to extract identification information from the national ID for Rwanda.
 
 ## Installation
 
@@ -73,4 +74,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 AgroForm empowers agricultural companies by providing them with a robust platform to manage their operations more efficiently. By simplifying data management and extraction processes, AgroForm enhances productivity and decision-making in the agricultural sector.
 
-For more information and to get started with AgroForm, visit our GitHub repos
+For more information and to get started with AgroForm, visit our GitHub repository.
